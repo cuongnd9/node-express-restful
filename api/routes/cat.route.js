@@ -9,4 +9,8 @@ router.post('/', controller.post)
 
 router.get('/:catId', controller.getCat)
 
+router.put('/:catId', controller.updateCat)
+
+router.delete('/:catId', controller.deleteCat)
+
 module.exports = router

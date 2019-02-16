@@ -25,3 +25,24 @@ module.exports.getCat = async (req, res) => {
 
 	res.json(cat)
 }
+
+module.exports.updateCat = async (req, res) => {
+	const { catId } = req.params
+	const { name, color } = req.body
+
+	const cat = await Cat.findById(catId)
+	cat.name = name
+	cat.color = color
+
+	await cat.save()
+
+	res.json({ message: 'Cat updated!' })
+}
+
+module.exports.deleteCat = async (req, res) => {
+	const { catId } = req.params
+
+	await Cat.deleteOne({ _id: catId })
+
+	res.json({ message: 'Cat deleted!'})
+}
